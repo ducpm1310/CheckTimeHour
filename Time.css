@@ -1,0 +1,23 @@
+﻿#wrap{
+	margin:auto;
+	width:300px; 
+	height:200px;
+	border:1px solid #ddd;
+	box-shadow:0px 5px 10px 1px rgba(0,0,0,0.1);
+	border-radius: 10px;
+	overflow:hidden;
+}
+#title{
+	background:#4CAF50;
+	height:30px;
+	color:#fff;
+	font-weight:bold;
+	padding:0 10px;
+	line-height:30px;
+}
+table{
+	padding: 25px 10px;
+}
+#main{
+	padding-top:30px;
+}
