@@ -1,0 +1,80 @@
+﻿<html>
+<head>
+    <style>
+        #wrap{margin:auto;width:300px; height:200px;border:1px solid #ddd;box-shadow:0px 5px 10px 1px rgba(0,0,0,0.1);border-radius: 10px;overflow:hidden;}
+        #title{background:#4CAF50;height:30px;color:#fff;font-weight:bold;padding:0 10px;line-height:30px;}
+        table{padding: 25px 10px;}
+		#main{padding-top:30px;}
+    </style>
+</head>
+<body>
+    <form id="main" onsubmit="return Submit()">
+        <div id="wrap">
+            <div id="title">CheckTime Program</div>
+            <table>
+                <tr>
+                    <td><p>Start Time</p></td>
+                    <td><input type="number" id="iStart" min="0" max="23" required style="width:180px" autocomplete="off" value="22"></td>
+                </tr>
+                <tr>
+                    <td><p>End Time</p></td>
+                    <td><input type="number" id="iEnd" min="0" max="23" required style="width:180px" autocomplete="off" value="5"></td>
+                </tr>
+                <tr>
+                    <td><p>Check Time</p></td>
+                    <td><input type="number" id="iCheck" min="0" max="23" required style="width:180px" autocomplete="off" onchange="Check()"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td style="text-align:left;"><input type="submit" id="submit" onclick="Check();" value="Check" margin-left="500px"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><div id="result"></div></td>
+                </tr>
+            </table>
+        </div>
+    </form>
+    <script language="javascript">
+        var eStart = document.getElementById("iStart");
+        var eEnd = document.getElementById("iEnd");
+        var eCheck = document.getElementById("iCheck");
+        var eResult = document.getElementById("result");
+        var form = document.getElementById("main");
+        //機能  Submitボタン押下処理
+        function Check() {
+            if(form.checkValidity())
+                if (eStart.value == "" || eEnd.value == "" || eCheck.value == "") {
+                    eResult.innerHTML = "Input time, please";
+                } else {
+			        CompareTime();
+                };
+        };
+	    //時間を比べる関数
+        function CompareTime() {
+            var start = parseInt(eStart.value);
+            var end = parseInt(eEnd.value);
+            var check = parseInt(eCheck.value);
+		    //starttimeよりendtimeの値が多い場絵は、
+            if (start <= end) {
+                if (check >= start && check <= end) {
+                    eResult.innerHTML = ('<b>' + check + '</b> be long to <b>' + start + '</b> &#8594; <b>' + end + '</b>');
+                } else {
+                    eResult.innerHTML = ('<b>' + check + '</b> not be long to <b>' + start + '</b> &#8594; <b>' + end + '</b>');
+                }
+            }
+		    //endtimeよりstartimeの値が多い場絵は、
+            else {
+                if (check >= start || check <= end) {
+                    eResult.innerHTML = ('<b>' + check + '</b> be long to <b>' + start + '</b> &#8594; <b>' + end + '</b>');
+                }
+                else
+                    eResult.innerHTML = ('<b>' + check + '</b> not be long to <b>' + start + '</b> &#8594; <b>' + end + '</b>');
+            }
+        }
+        //
+        function Submit() {
+            return false;
+        }
+    </script>
+</body>
+</html>
