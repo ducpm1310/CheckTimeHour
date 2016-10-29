@@ -27,7 +27,7 @@ function CompareTime() {
 	var check = parseInt(eCheck.value);
 	//starttimeよりendtimeの値が多い場絵は、
 	if (start <= end) {
-		if (check >= start && check <= end) {
+		if (check >= start && check < end) {
 			eResult.innerHTML = ('<b>' + check + '</b> be long to <b>' + start + '</b> &#8594; <b>' + end + '</b>');
 		} else {
 			eResult.innerHTML = ('<b>' + check + '</b> not be long to <b>' + start + '</b> &#8594; <b>' + end + '</b>');
@@ -35,7 +35,7 @@ function CompareTime() {
 	}
 	//endtimeよりstartimeの値が多い場絵は、
 	else {
-		if (check >= start || check <= end) {
+		if (check >= start || check < end) {
 			eResult.innerHTML = ('<b>' + check + '</b> be long to <b>' + start + '</b> &#8594; <b>' + end + '</b>');
 		} else
 			eResult.innerHTML = ('<b>' + check + '</b> not be long to <b>' + start + '</b> &#8594; <b>' + end + '</b>');
